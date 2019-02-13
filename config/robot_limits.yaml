@@ -1,0 +1,4 @@
+coxa_limits:
+  max_position: 90
+  min_position: -90
+  

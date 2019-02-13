@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<robot name="ardent" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ardent_description)/config/robot/urdf/ardent_urdf_quad.xacro"/>
+  
+  <!-- for more info visit: http://wiki.ros.org/urdf/Tutorials -->
+
+  <link name="base_link"/>
+  
+  <xacro:ardent parent="base_link">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:ardent>
+  
+  <!-- <gazebo>
+    <controller:gazebo_ros_controller_manager plugin="libgazebo_ros_controller_manager.so" name="gazebo_ros_controller_manager">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>1000.0</updateRate>
+        <robotParam>robot_description</robotParam>
+        <robotNamespace>/</robotNamespace>
+    </controller:gazebo_ros_controller_manager>
+  </gazebo> -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+    </plugin>
+  </gazebo> 
+  
+</robot>
+ 

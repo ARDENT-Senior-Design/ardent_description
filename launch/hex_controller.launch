@@ -1,0 +1,21 @@
+<launch>
+    <rosparam file="$(find ardent_controllers)/config/conthex_position_controller.yaml" command="load"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+    output="screen" args="joint_state_controller j_coxa_rf_traj_controller j_coxa_rm_traj_controller j_coxa_rr_traj_controller j_coxa_lf_traj_controller j_coxa_lm_traj_controller j_coxa_lr_traj_controller j_femur_rf_traj_controller j_femur_rm_traj_controller j_femur_rr_traj_controller j_femur_lf_traj_controller j_femur_lm_traj_controller j_femur_lr_traj_controller j_tibia_rf_traj_controller j_tibia_rm_traj_controller j_tibia_rr_traj_controller j_tibia_lf_traj_controller j_tibia_lm_traj_controller j_tibia_lr_traj_controller"/>
+    
+    
+    <!-- Buffer Server -->
+    <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" output="screen">
+        <param name="buffer_size" value="120.0"/>
+    </node>
+    <!-- 
+    <rosparam file="$(find ardent)/params/params.yaml"/>
+    <rosparam file="${find ardent)/params/controller.yaml"> -->
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node> -->
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen"> -->
+        <!-- <remap from="/joint_states" to="/ardent/joint_states" /> -->
+    <!-- </node> -->
+</launch>

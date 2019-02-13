@@ -1,0 +1,26 @@
+<launch>
+    <!-- <rosparam file="$(find ardent_controllers)/config/quad_traj_controller.yaml" command="load"/> -->
+    <rosparam file="$(find ardent_controllers)/config/quad_position_controller.yaml" command="load"/>
+
+   <arg name="gui" default="False" />
+   <param name="use_gui" value="$(arg gui)"/>
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+   <node name="rviz" pkg="rviz" type="rviz" />
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+    output="screen" args="joint_state_controller j_coxa_1_position_controller j_coxa_3_position_controller j_coxa_4_position_controller j_coxa_6_position_controller j_femur_1_position_controller j_femur_3_position_controller j_femur_4_position_controller j_femur_6_position_controller j_tibia_1_position_controller j_tibia_3_position_controller j_tibia_4_position_controller j_tibia_6_position_controller"/>
+    
+    <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner"
+    output="screen" args="joint_state_controller rf_trajectory_effort_controller"/> -->
+
+
+    <!-- Buffer Server -->
+    <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" output="screen">
+        <param name="buffer_size" value="120.0"/>
+    </node>
+    <!-- 
+    <rosparam file="$(find ardent)/params/params.yaml"/>
+    <rosparam file="${find ardent)/params/controller.yaml"> -->
+    
+</launch>

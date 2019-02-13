@@ -1,0 +1,16 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <plugin name='gazebo_ros_controller_manager' filename='libgazebo_ros_controller_manager.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>1000.0</updateRate>
+        </plugin>
+        <arg name="world_name" value="worlds/empty.world"/>
+        <arg name="paused" value="false"/>
+    </include>
+    
+    <param name="robot_description" command="cat $(find ardent_description)/config/robot/urdf/ardent.urdf" />
+
+    <include file="$(find ardent_description)/launch/quad_controller.launch"/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find ardent_description)/config/robot/urdf/ardent.urdf -urdf -z 0.9 -model ardent"/>
+    
+</launch>
