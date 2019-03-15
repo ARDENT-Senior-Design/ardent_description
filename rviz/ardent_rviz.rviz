@@ -5,12 +5,12 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Status1
+        - /Grid1/Status1
         - /Grid1/Offset1
-        - /TF1
         - /TF1/Frames1
+        - /RobotModel1
       Splitter Ratio: 0.5
-    Tree Height: 629
+    Tree Height: 591
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -19,7 +19,7 @@ Panels:
       - /2D Nav Goal1
       - /Publish Point1
     Name: Tool Properties
-    Splitter Ratio: 0.588679016
+    Splitter Ratio: 0.5886790156364441
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -33,6 +33,8 @@ Panels:
   - Class: rviz_plugin_tutorials/Teleop
     Name: Teleop
     Topic: ""
+Preferences:
+  PromptSaveOnExit: true
 Visualization Manager:
   Class: ""
   Displays:
@@ -42,7 +44,7 @@ Visualization Manager:
       Color: 0; 255; 255
       Enabled: true
       Line Style:
-        Line Width: 0.0299999993
+        Line Width: 0.029999999329447746
         Value: Lines
       Name: Grid
       Normal Cell Count: 0
@@ -52,64 +54,48 @@ Visualization Manager:
         Z: -0.25
       Plane: XY
       Plane Cell Count: 10
-      Reference Frame: MP_BODY
+      Reference Frame: base_link
       Value: true
     - Class: rviz/TF
       Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        MP_BODY:
-          Value: true
         base_link:
           Value: true
-        c2_lf:
+        body:
           Value: true
-        c2_lm:
+        c2_1:
           Value: true
-        c2_lr:
+        c2_2:
           Value: true
-        c2_rf:
+        c2_3:
           Value: true
-        c2_rm:
+        c2_4:
           Value: true
-        c2_rr:
+        contact_sensor_1:
           Value: true
-        coxa_lf:
+        contact_sensor_2:
           Value: true
-        coxa_lm:
+        contact_sensor_3:
           Value: true
-        coxa_lr:
+        contact_sensor_4:
           Value: true
-        coxa_rf:
+        coxa_1:
           Value: true
-        coxa_rm:
+        coxa_2:
           Value: true
-        coxa_rr:
+        coxa_3:
           Value: true
-        femur_lf:
+        coxa_4:
           Value: true
-        femur_lm:
+        tibia_1:
           Value: true
-        femur_lr:
+        tibia_2:
           Value: true
-        femur_rf:
+        tibia_3:
           Value: true
-        femur_rm:
-          Value: true
-        femur_rr:
-          Value: true
-        tibia_lf:
-          Value: true
-        tibia_lm:
-          Value: true
-        tibia_lr:
-          Value: true
-        tibia_rf:
-          Value: true
-        tibia_rm:
-          Value: true
-        tibia_rr:
+        tibia_4:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -118,37 +104,8 @@ Visualization Manager:
       Show Names: false
       Tree:
         base_link:
-          MP_BODY:
-            coxa_lf:
-              c2_lf:
-                femur_lf:
-                  tibia_lf:
-                    {}
-            coxa_lm:
-              c2_lm:
-                femur_lm:
-                  tibia_lm:
-                    {}
-            coxa_lr:
-              c2_lr:
-                femur_lr:
-                  tibia_lr:
-                    {}
-            coxa_rf:
-              c2_rf:
-                femur_rf:
-                  tibia_rf:
-                    {}
-            coxa_rm:
-              c2_rm:
-                femur_rm:
-                  tibia_rm:
-                    {}
-            coxa_rr:
-              c2_rr:
-                femur_rr:
-                  tibia_rr:
-                    {}
+          body:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -160,45 +117,34 @@ Visualization Manager:
       Name: Effort
       Robot Description: robot_description
       Scale: 1
+      TF Prefix: ""
       Topic: ""
       Unreliable: false
       Value: true
-      Width: 0.0199999996
-      j_coxa_lf:
+      Width: 0.019999999552965164
+      j_coxa_1:
         Value: true
-      j_coxa_lm:
+      j_coxa_2:
         Value: true
-      j_coxa_lr:
+      j_coxa_3:
         Value: true
-      j_coxa_rf:
+      j_coxa_4:
         Value: true
-      j_coxa_rm:
+      j_femur_1:
         Value: true
-      j_coxa_rr:
+      j_femur_2:
         Value: true
-      j_femur_lf:
+      j_femur_3:
         Value: true
-      j_femur_lm:
+      j_femur_4:
         Value: true
-      j_femur_lr:
+      j_tibia_1:
         Value: true
-      j_femur_rf:
+      j_tibia_2:
         Value: true
-      j_femur_rm:
+      j_tibia_3:
         Value: true
-      j_femur_rr:
-        Value: true
-      j_tibia_lf:
-        Value: true
-      j_tibia_lm:
-        Value: true
-      j_tibia_lr:
-        Value: true
-      j_tibia_rf:
-        Value: true
-      j_tibia_rm:
-        Value: true
-      j_tibia_rr:
+      j_tibia_4:
         Value: true
     - Alpha: 1
       Class: rviz/RobotModel
@@ -210,131 +156,111 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        MP_BODY:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        c2_lf:
+        body:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        c2_lm:
+        c2_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        c2_lr:
+        c2_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        c2_rf:
+        c2_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        c2_rm:
+        c2_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        c2_rr:
+        contact_sensor_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_lf:
+        contact_sensor_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_lm:
+        contact_sensor_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_lr:
+        contact_sensor_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_rf:
+        coxa_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_rm:
+        coxa_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        coxa_rr:
+        coxa_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_lf:
+        coxa_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_lm:
+        femur_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_lr:
+        femur_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_rf:
+        femur_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_rm:
+        femur_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        femur_rr:
+        tibia_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        tibia_lf:
+        tibia_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        tibia_lm:
+        tibia_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        tibia_lr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tibia_rf:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tibia_rm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tibia_rr:
+        tibia_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -349,7 +275,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: MP_BODY
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -370,33 +296,33 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.18020201
+      Distance: 2.180202007293701
       Enable Stereo Rendering:
-        Stereo Eye Separation: 0.0599999987
+        Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0679534897
-        Y: 0.0332779251
-        Z: 0.0211273134
+        X: -0.06795348972082138
+        Y: 0.03327792510390282
+        Z: 0.021127313375473022
       Focal Shape Fixed Size: true
-      Focal Shape Size: 0.0500000007
+      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
-      Near Clip Distance: 0.00999999978
-      Pitch: 0.375397474
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.3753974735736847
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.68858767
+      Yaw: 5.688587665557861
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1056
+  Height: 1025
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000003befc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000000000000304000000d700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00540065006c0065006f0070010000030a000000b40000004900ffffff000000010000010f000003befc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000000000003be000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073f0000003efc0100000002fb0000000800540069006d006501000000000000073f0000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000004ba000003be00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000038afc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000016000002da000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00540065006c0065006f007001000002f6000000aa0000004700ffffff000000010000010f0000038afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007301000000160000038a000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073b0000003efc0100000002fb0000000800540069006d006501000000000000073b000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000004b60000038a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Teleop:
@@ -407,6 +333,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1855
-  X: 65
-  Y: 24
+  Width: 1851
+  X: 69
+  Y: 27

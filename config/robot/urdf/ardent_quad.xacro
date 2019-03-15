@@ -2,6 +2,7 @@
 <robot name="ardent" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find ardent_description)/config/robot/urdf/ardent_urdf_quad.xacro"/>
+  <xacro:include filename="$(find ardent_description)/config/robot/urdf/camera.xacro"/>
   
   <!-- for more info visit: http://wiki.ros.org/urdf/Tutorials -->
 

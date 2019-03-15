@@ -9,7 +9,7 @@
 <xacro:property name="joint_upper_limit" value ="${1.5}"/>
 <!-- <xacro:property name="joint_effort" value ="10000"/>
 <xacro:property name="joint_velocity" value ="100"/> -->
-
+<xacro:property name="camera_link" value="0.05" />  <!-- Size of square 'camera' box -->
 
 <xacro:macro name="ardent" params="parent *origin">
     
