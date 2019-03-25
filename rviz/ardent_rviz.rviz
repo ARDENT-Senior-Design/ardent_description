@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Grid1/Status1
+        - /Grid1
         - /Grid1/Offset1
         - /TF1/Frames1
         - /RobotModel1
@@ -51,7 +51,7 @@ Visualization Manager:
       Offset:
         X: 0
         Y: 0
-        Z: -0.25
+        Z: -0.11999999731779099
       Plane: XY
       Plane Cell Count: 10
       Reference Frame: base_link
@@ -73,6 +73,10 @@ Visualization Manager:
           Value: true
         c2_4:
           Value: true
+        camera_link:
+          Value: true
+        camera_link_optical:
+          Value: true
         contact_sensor_1:
           Value: true
         contact_sensor_2:
@@ -89,6 +93,16 @@ Visualization Manager:
           Value: true
         coxa_4:
           Value: true
+        femur_1:
+          Value: true
+        femur_2:
+          Value: true
+        femur_3:
+          Value: true
+        femur_4:
+          Value: true
+        odom:
+          Value: true
         tibia_1:
           Value: true
         tibia_2:
@@ -103,9 +117,36 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          body:
-            {}
+        odom:
+          base_link:
+            body:
+              camera_link:
+                camera_link_optical:
+                  {}
+              coxa_1:
+                c2_1:
+                  femur_1:
+                    tibia_1:
+                      contact_sensor_1:
+                        {}
+              coxa_2:
+                c2_2:
+                  femur_2:
+                    tibia_2:
+                      contact_sensor_2:
+                        {}
+              coxa_3:
+                c2_3:
+                  femur_3:
+                    tibia_3:
+                      contact_sensor_3:
+                        {}
+              coxa_4:
+                c2_4:
+                  femur_4:
+                    tibia_4:
+                      contact_sensor_4:
+                        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -185,6 +226,15 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_link_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         contact_sensor_1:
           Alpha: 1
           Show Axes: false
@@ -311,10 +361,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3753974735736847
+      Pitch: 0.4903974235057831
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.688587665557861
+      Yaw: 6.093602180480957
     Saved: ~
 Window Geometry:
   Displays:

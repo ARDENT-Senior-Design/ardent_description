@@ -4,7 +4,8 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="ardent" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <!-- Size of square 'camera' box -->
+  <!-- <xacro:property name="joint_effort" value ="10000"/>
+<xacro:property name="joint_velocity" value ="100"/> -->
   <!-- Link-->
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0"/>
@@ -44,6 +45,54 @@
   </joint>
   <link name="camera_link_optical">
     </link>
+  <!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor name="camera1" type="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+                That pixel's noise value is added to each of its color
+                channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <!-- Depth Plugin -->
+      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>rrbot/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link_optical</frameName>
+        <!-- setting hackBaseline to anything but 0.0 will cause a misalignment
+                between the gazebo sensor image and the frame it is supposed to
+                be attached to -->
+        <hackBaseline>0.0</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0.0</Cx>
+        <Cy>0.0</Cy>
+        <focalLength>0.0</focalLength>
+      </plugin>
+    </sensor>
+  </gazebo>
   <!-- for more info visit: http://wiki.ros.org/urdf/Tutorials -->
   <link name="base_link"/>
   <joint name="j_ardent_attachment" type="fixed">
@@ -168,10 +217,10 @@
       <inertia ixx="0.00059" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.00059"/>
     </inertial>
     <visual>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
         <!-- <box size="0.022 0.25 0.0325" /> -->
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!--<mesh filename="package://phantomx_description/meshes/thigh_l.STL"  scale="1 1 1"/>-->
       </geometry>
       <material name="Grey">
@@ -179,9 +228,9 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!-- <mesh filename="package://phantomx_description/meshes/thigh_l_coll.STL"  scale="1 1 1"/> -->
       </geometry>
     </collision>
@@ -263,7 +312,7 @@
   <joint name="j_tibia_1" type="revolute">
     <parent link="femur_1"/>
     <child link="tibia_1"/>
-    <origin rpy="0 0 0" xyz="0.125 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="30" lower="-3.14" upper="3.14" velocity="0.5"/>
   </joint>
@@ -421,10 +470,10 @@
       <inertia ixx="0.00059" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.00059"/>
     </inertial>
     <visual>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
         <!-- <box size="0.022 0.25 0.0325" /> -->
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!--<mesh filename="package://phantomx_description/meshes/thigh_l.STL"  scale="1 1 1"/>-->
       </geometry>
       <material name="Grey">
@@ -432,9 +481,9 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!-- <mesh filename="package://phantomx_description/meshes/thigh_l_coll.STL"  scale="1 1 1"/> -->
       </geometry>
     </collision>
@@ -516,7 +565,7 @@
   <joint name="j_tibia_2" type="revolute">
     <parent link="femur_2"/>
     <child link="tibia_2"/>
-    <origin rpy="0 0 0" xyz="0.125 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="30" lower="-3.14" upper="3.14" velocity="0.5"/>
   </joint>
@@ -674,10 +723,10 @@
       <inertia ixx="0.00059" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.00059"/>
     </inertial>
     <visual>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
         <!-- <box size="0.022 0.25 0.0325" /> -->
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!--<mesh filename="package://phantomx_description/meshes/thigh_l.STL"  scale="1 1 1"/>-->
       </geometry>
       <material name="Grey">
@@ -685,9 +734,9 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!-- <mesh filename="package://phantomx_description/meshes/thigh_l_coll.STL"  scale="1 1 1"/> -->
       </geometry>
     </collision>
@@ -769,7 +818,7 @@
   <joint name="j_tibia_3" type="revolute">
     <parent link="femur_3"/>
     <child link="tibia_3"/>
-    <origin rpy="0 0 0" xyz="0.125 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="30" lower="-3.14" upper="3.14" velocity="0.5"/>
   </joint>
@@ -927,10 +976,10 @@
       <inertia ixx="0.00059" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.00059"/>
     </inertial>
     <visual>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
         <!-- <box size="0.022 0.25 0.0325" /> -->
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!--<mesh filename="package://phantomx_description/meshes/thigh_l.STL"  scale="1 1 1"/>-->
       </geometry>
       <material name="Grey">
@@ -938,9 +987,9 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 1.57 0" xyz="0.075 0 0"/>
+      <origin rpy="0 1.57 0" xyz="0.125 0 0"/>
       <geometry>
-        <cylinder length="0.15" radius="0.015"/>
+        <cylinder length="0.25" radius="0.015"/>
         <!-- <mesh filename="package://phantomx_description/meshes/thigh_l_coll.STL"  scale="1 1 1"/> -->
       </geometry>
     </collision>
@@ -1022,7 +1071,7 @@
   <joint name="j_tibia_4" type="revolute">
     <parent link="femur_4"/>
     <child link="tibia_4"/>
-    <origin rpy="0 0 0" xyz="0.125 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="30" lower="-3.14" upper="3.14" velocity="0.5"/>
   </joint>

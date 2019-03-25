@@ -9,7 +9,6 @@
 <xacro:property name="joint_upper_limit" value ="${1.5}"/>
 <!-- <xacro:property name="joint_effort" value ="10000"/>
 <xacro:property name="joint_velocity" value ="100"/> -->
-<xacro:property name="camera_link" value="0.05" />  <!-- Size of square 'camera' box -->
 
 <xacro:macro name="ardent" params="parent *origin">
     
@@ -155,10 +154,10 @@
      <inertia ixx="0.00059"  ixy="-0.0"  ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.00059" /> 
     </inertial>
     <visual>
-      <origin xyz="0.075 0 0" rpy="0 1.57 0"  />
+      <origin xyz="0.125 0 0" rpy="0 1.57 0"  />
       <geometry>
         <!-- <box size="0.022 0.25 0.0325" /> -->
-        <cylinder  radius="0.015" length="0.15" />
+        <cylinder  radius="0.015" length="0.25" />
         <!--<mesh filename="package://phantomx_description/meshes/thigh_l.STL"  scale="1 1 1"/>-->
       </geometry>
       <material name="Grey">
@@ -166,9 +165,9 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.075 0 0" rpy="0 1.57 0"  />
+      <origin xyz="0.125 0 0" rpy="0 1.57 0"  />
       <geometry>
-        <cylinder  radius="0.015" length="0.15" />
+        <cylinder  radius="0.015" length="0.25" />
         <!-- <mesh filename="package://phantomx_description/meshes/thigh_l_coll.STL"  scale="1 1 1"/> -->
       </geometry>
     </collision>
@@ -261,7 +260,7 @@
   <joint name="j_tibia_${suffix}" type="revolute">
     <parent link="femur_${suffix}"/>
     <child link="tibia_${suffix}"/>
-    <origin xyz="0.125 0 0" rpy="0 0 0" />
+    <origin xyz="0.25 0 0" rpy="0 0 0" />
     <axis xyz="0 0 1" />
     <limit effort="30" velocity="0.5" lower="-3.14" upper="3.14" />
   </joint>
